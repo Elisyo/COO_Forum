@@ -1,7 +1,13 @@
+package domain;
 import java.util.ArrayList;
 
-public class User {
+import designPattern.IDomainObject;
+import designPattern.Observateur;
+import designPattern.Visiteur;
 
+public class User implements IDomainObject{
+
+	public int idUser; // identifiant
 	public String nomCompte;
 	public String mdp;
 	public String mail;
@@ -11,14 +17,22 @@ public class User {
 	public ArrayList<Hobby> hobbies;
 	public ArrayList<User> friends;
 
-	User(String nomCompte, String mdp, String role){
+	public User(int idUser, String nomCompte, String mdp, String role){
+		this.idUser=idUser;
 		this.nomCompte=nomCompte;
 		this.mdp=mdp;
 		this.role=role;
 	}
 	
+	public int getIdUser() {
+		return idUser;
+	}
+	
 	public String getNomCompte() {
 		return nomCompte;
+	}
+	public void setNomCompte(String nomCompte) {
+		this.nomCompte = nomCompte;
 	}
 	
 	public String getMdp() {
@@ -80,5 +94,20 @@ public class User {
 	}
 	public void removeFriend(User user){
 		this.friends.remove(user);
+	}
+
+	public void add(Observateur o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void notifier() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void accepter(Visiteur v) {
+		// TODO Auto-generated method stub
+		
 	}
 }
