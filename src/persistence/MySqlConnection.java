@@ -1,22 +1,31 @@
 package persistence;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class MySqlConnection {
-    public static Connection c; 
+    public static Connection c;
+	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+
     public static Connection getConnection(String username, String password){ 
         if (c == null) 
         	MySqlConnection.c = new MySqlConnection(username, password).c; 
         return MySqlConnection.c;
     }
-    public static void closeConnection(){
+    
+    /**
+     * Close the connection safely
+     */
+    public void closeConnection(){
     	try {
 			c.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE,"Connection doesn't exist.");
 		}
     }
+    
     /**
-     * Classe permettant de joindre la base de données.
-     * 
+     * Class which join the database.
+     *       
      * @param username String
      * @param password String
      */
@@ -27,8 +36,7 @@ public class MySqlConnection {
 	        c = DriverManager.getConnection(url ,username,password);
 	        c.setAutoCommit(true);
 	    }catch(Exception e){
-            System.out.println(e);
-            closeConnection();
+	    	LOGGER.log(Level.SEVERE,"Can't join the database.");
         };
     }
 }

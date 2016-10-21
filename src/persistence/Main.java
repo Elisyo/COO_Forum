@@ -1,12 +1,35 @@
 package persistence;
 
+import java.io.Console;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import domain.User;
 
 public class Main {
+	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+	
+	/**
+	 * Function which will get the username and the password of a user.
+	 * 
+	 * @return mySql MySqlConnection
+	 */
+	public static MySqlConnection joinDB(){
+		Scanner sc = new Scanner(System.in);
+		MySqlConnection mySql;
+		System.out.println("Veuillez saisir votre username :");
+		String username = sc.nextLine();
+		
+		System.out.println("Veuillez saisir votre mot de passe :");
+		String mdp = sc.nextLine();
+		
+		return mySql = new MySqlConnection(username,mdp);
+	}
+	
 	static public void main(String args[]) {
-		// args[2] : user | args[2] : mdp
-		MySqlConnection mySql = new MySqlConnection(args[1],args[2]);
-
+		MySqlConnection mySql = joinDB();
+		
 		User u = UserMapper.getInstance().findById(0);
 
 		u.setNom("Paul");

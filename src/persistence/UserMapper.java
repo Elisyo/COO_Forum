@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import domain.User;
 
 public class UserMapper {
 
+	private static final Logger LOGGER = Logger.getLogger( UserMapper.class.getName() );
 	static UserMapper inst;
 	private static Connection c;
 	int ID;
@@ -30,10 +33,10 @@ public class UserMapper {
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 		} catch (Exception e) {
-			System.out.println("User don't exist !");
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,"User doesn't exist!");
+			//e.printStackTrace();
 		}
-		User u = new User(1,"pseudo", "motDePasse", "admin");
+		User u = new User(1,"pseudo", "password", "admin");
 		u.add(UnitOfWork.getInstance());
 		return u;
 	}
