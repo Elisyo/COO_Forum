@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class MySqlConnection {
     public static Connection c;
-	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(MySqlConnection.class.getName());
 
     public static Connection getConnection(String username, String password){ 
         if (c == null) 
@@ -34,7 +34,8 @@ public class MySqlConnection {
         	Class.forName("com.mysql.jdbc.Driver").newInstance();
 	        String url = "jdbc:mysql://webtp.fil.univ-lille1.fr/"+username;
 	        c = DriverManager.getConnection(url ,username,password);
-	        c.setAutoCommit(true);
+	        c.setAutoCommit(false);
+	        System.out.println("Connexion réussie !!!");
 	    }catch(Exception e){
 	    	LOGGER.log(Level.SEVERE,"Can't join the database.");
         };

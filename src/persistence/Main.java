@@ -24,12 +24,12 @@ public class Main {
 	}
 	
 	static public void main(String args[]) {
-		MySqlConnection mySql = joinDB();
+			MySqlConnection mySql = joinDB();
+			
+		//User u = UserMapper.getInstance().findById(0);
 		
-		User u = UserMapper.getInstance().findById(0);
-
-		u.setNom("Paul");
-		u.setMail("paul.pat@paul.com"); 
+		//u.setNom("Paul");
+		//u.setMail("paul.pat@paul.com"); 
 		UnitOfWork.getInstance().commit();
         // Si on appelle commit alors qu'il n'y a pas de modifications, on ne fait rien.
 		UnitOfWork.getInstance().commit();
