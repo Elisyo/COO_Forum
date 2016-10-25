@@ -1,14 +1,11 @@
 package persistence;
 
-import java.io.Console;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import domain.User;
 
 public class Main {
-	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+	
+	public static boolean joinDbBool = true;
 	
 	/**
 	 * Function which will get the username and the password of a user.
@@ -17,14 +14,13 @@ public class Main {
 	 */
 	public static MySqlConnection joinDB(){
 		Scanner sc = new Scanner(System.in);
-		MySqlConnection mySql;
 		System.out.println("Veuillez saisir votre username :");
 		String username = sc.nextLine();
 		
 		System.out.println("Veuillez saisir votre mot de passe :");
 		String mdp = sc.nextLine();
 		
-		return mySql = new MySqlConnection(username,mdp);
+		return new MySqlConnection(username,mdp);
 	}
 	
 	static public void main(String args[]) {
