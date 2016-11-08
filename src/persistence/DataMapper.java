@@ -1,4 +1,4 @@
-package src.persistence;
+package persistence;
 
 import java.lang.reflect.Method;
 import java.sql.Connection;

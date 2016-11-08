@@ -32,7 +32,6 @@ public class MySqlConnection {
 	        String url = "jdbc:mysql://webtp.fil.univ-lille1.fr/deleplanque";
 	        c = DriverManager.getConnection(url ,"deleplanque","vermelles0312");
 	        c.setAutoCommit(false);
-	        System.out.println("Connexion réussie !!!");
 	    }catch(Exception e){
 	    	LOGGER.log(Level.SEVERE,"Can't join the database.");
 	    	System.exit(0);

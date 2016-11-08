@@ -24,6 +24,17 @@ public class User implements IDomainObject{
 		this.role=role;
 	}
 	
+	public User(int idUser, String nomCompte,String mail, String mdp,String lastname,
+			String firstname, String role){
+		this.idUser=idUser;
+		this.nomCompte=nomCompte;
+		this.mail=mail;
+		this.mdp=mdp;
+		this.nom = lastname;
+		this.prenom = firstname;
+		this.role=role;
+	}
+	
 	public int getIdUser() {
 		return idUser;
 	}
