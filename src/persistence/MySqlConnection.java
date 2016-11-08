@@ -8,7 +8,7 @@ public class MySqlConnection {
 
     public static Connection getConnection(String username, String password){ 
         if (c == null) 
-        	MySqlConnection.c = new MySqlConnection(username, password).c; 
+        	MySqlConnection.c = new MySqlConnection().c; 
         return MySqlConnection.c;
     }
     
@@ -25,19 +25,17 @@ public class MySqlConnection {
     
     /**
      * Class which join the database.
-     *       
-     * @param username String
-     * @param password String
      */
-    public MySqlConnection(String username,String password) {
+    public MySqlConnection() {
         try{
         	Class.forName("com.mysql.jdbc.Driver").newInstance();
-	        String url = "jdbc:mysql://webtp.fil.univ-lille1.fr/"+username;
-	        c = DriverManager.getConnection(url ,username,password);
+	        String url = "jdbc:mysql://webtp.fil.univ-lille1.fr/deleplanque";
+	        c = DriverManager.getConnection(url ,"deleplanque","vermelles0312");
 	        c.setAutoCommit(false);
 	        System.out.println("Connexion réussie !!!");
 	    }catch(Exception e){
 	    	LOGGER.log(Level.SEVERE,"Can't join the database.");
+	    	System.exit(0);
         };
     }
 }
