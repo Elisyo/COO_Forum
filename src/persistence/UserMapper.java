@@ -39,7 +39,7 @@ public class UserMapper {
 		u.add(UnitOfWork.getInstance());
 		return u;
 	}
-	User findByNameAccount(String nameAccount) {
+	public User findByNameAccount(String nameAccount) {
 		// methode bidon pour tester (en vrai: on recupere depuis la B.D.D.)
 		String req = "SELECT nameAccount, mail, password, lastname, firstname, role FROM user WHERE nameAccount=?";
 		PreparedStatement ps;
