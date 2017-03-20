@@ -1,12 +1,14 @@
 package forum.bean.data;
 
+import java.rmi.RemoteException;
+
 public class MessageGroup extends Message{
 	
 	private Groupe groupe;
 	
-	public MessageGroup() {}
+	public MessageGroup() throws RemoteException{}
 	
-	public MessageGroup(String contenue, Groupe groupe) {
+	public MessageGroup(String contenue, Groupe groupe) throws RemoteException{
 		this.groupe = groupe;
 		setContenue(contenue);
 		setCrypt(false);

@@ -1,13 +1,20 @@
 package forum.bean.data;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 
 import forum.UnitOfWork.IDomainObject;
 import forum.UnitOfWork.Observateur;
 import forum.UnitOfWork.Visiteur;
+import forum.bean.Interface.IMessage;
 
-public abstract class Message implements IDomainObject{
+public abstract class Message extends UnicastRemoteObject implements IDomainObject, IMessage{
+
+	protected Message() throws RemoteException {
+		super();
+	}
 
 	private int idMessage;
 	private User destinataire;

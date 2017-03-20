@@ -1,13 +1,16 @@
 package forum.bean.data;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
 import forum.UnitOfWork.IDomainObject;
 import forum.UnitOfWork.Observateur;
 import forum.UnitOfWork.Visiteur;
+import forum.bean.Interface.IGroupe;
 
-public class Groupe implements IDomainObject{
+public class Groupe extends UnicastRemoteObject implements IDomainObject, IGroupe{
 
 	private User moderator;
 	private String nomGroupe;
@@ -16,7 +19,7 @@ public class Groupe implements IDomainObject{
 	private List<MessageGroup> listMessage;
 	List<Observateur> obs;
 
-	public Groupe(int idGroupe, String nomGroupe, User moderator, ArrayList<User> users, List<MessageGroup> listMessage) {
+	public Groupe(int idGroupe, String nomGroupe, User moderator, ArrayList<User> users, List<MessageGroup> listMessage) throws RemoteException{
 		this.idGroupe = idGroupe;
 		this.moderator = moderator;
 		this.users = users;
@@ -25,7 +28,7 @@ public class Groupe implements IDomainObject{
 		this.obs = new ArrayList<Observateur>();
 	}
 	
-	public Groupe() {
+	public Groupe() throws RemoteException{
 		this.obs = new ArrayList<Observateur>();
 	}
 	

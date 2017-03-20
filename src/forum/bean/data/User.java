@@ -1,12 +1,15 @@
 package forum.bean.data;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
 import forum.UnitOfWork.IDomainObject;
 import forum.UnitOfWork.Observateur;
 import forum.UnitOfWork.Visiteur;
+import forum.bean.Interface.IGroupe;
 
-public class User implements IDomainObject{
+public class User extends UnicastRemoteObject implements IDomainObject, IGroupe{
 
 	
 	private String nomCompte;
@@ -20,7 +23,7 @@ public class User implements IDomainObject{
 	List<Observateur> obs;
 	
 
-	public User(String nomCompte,String mail, String password, String nom, String prenom, String role, ArrayList<Hobby> hobbies, ArrayList<User> friends){
+	public User(String nomCompte,String mail, String password, String nom, String prenom, String role, ArrayList<Hobby> hobbies, ArrayList<User> friends) throws RemoteException{
 		this.nomCompte=nomCompte;
 		this.mail = mail;
 		this.nom = nom;
@@ -32,7 +35,7 @@ public class User implements IDomainObject{
 		this.obs = new ArrayList<Observateur>();
 	}
 	
-	public User(){
+	public User() throws RemoteException{
 		this.obs = new ArrayList<Observateur>();
 	}
 	
